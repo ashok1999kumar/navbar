@@ -1,5 +1,6 @@
+import { Alert } from 'bootstrap';
 import { Button } from 'bootstrap';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navgation } from './Navgation';
 export const Login = (prop) => {
     const [loginEmail,setEmail] = useState('');
@@ -16,11 +17,20 @@ export const Login = (prop) => {
                 </div>
                     <form className='container w-75' method='' onSubmit={(e)=>{
                         e.preventDefault();
-                        if((localStorage.getItem('Email') && localStorage.getItem('Password')) == (loginEmail && loginPassword)){
-                            alert('waaiting....')
-                        }else{
-                            alert('invalid userid and password..')
-                        }
+                        // if((localStorage.getItem('Email') === loginEmail) && (localStorage.getItem('Password') === loginPassword)){
+                        //     alert('waaiting....')
+                        // }else{
+                        //     alert('invalid userid and password..')
+                        // }
+
+                        let data = JSON.parse(localStorage.getItem('usersData'))
+                            let obj = data.find(o=>o.email === loginEmail && o.password === loginPassword)
+                            if(obj){
+                                alert('login...')
+                            }else{
+                                alert('invalid userid and password')
+                            }
+                        
 
                     }}>
                         <div className='my-3'>
@@ -40,8 +50,7 @@ export const Login = (prop) => {
                     />
                         </div>
                         <div className='my-3'>
-                            <button type='sumit' 
-                            name='password' 
+                            <button type='sumit'  
                             className='form-control bg-success text-light'>
                             SignIn</button>
                         </div>
