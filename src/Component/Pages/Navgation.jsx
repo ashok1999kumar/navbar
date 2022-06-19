@@ -3,35 +3,43 @@ import { Link } from 'react-router-dom';
 import { ContactUs } from './ContactUs';
 import { Login } from './Login';
 import { Signup } from './Signup';
-
+import Home from './Home';
 export const Navgation = () => {
-  return <div>
-      <div className=''>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light fw-bold">
-            <div className="container p-2 p-md-2">
-                <a className="navbar-brand" href="#">Software</a>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">  </div>
-                <div className=''>
-                <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-auto">
-                    <li className="nav-item">
-                    <a className="nav-link active" aria-current="page"><Link to='/Login' element={<Login/>}>Home</Link></a>
-                    </li>
-                    <li className="nav-item">
-                    <a className="nav-link active" aria-current="page"><Link to='/login' element={<Login/>}>SignIn</Link></a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link active" aria-current="page"><Link to='/signup' element={<Signup/>}>SignUp</Link></a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link active" aria-current="page"><Link to='/contact' element={<ContactUs/>}>Contact</Link></a>
-                    </li>
+  return <>
+    <section class="--section-header">
+            <nav class="nav justify-content-around">
+                <label class="--brand">myhome</label>
+                <ul id="ul">
+                <li>
+                    <a aria-current="page"><Link to='/' element={<Home/>}>home</Link></a>
+                </li>
+                <li>
+                    <a aria-current="page"><Link to='/login' element={<Login/>}>about us</Link></a>
+                </li>
+                <li>
+                    <a aria-current="page"><Link to='/login' element={<ContactUs/>}>contact us</Link></a>
+                </li>
+                <li>
+                    <a aria-current="page"><Link to='/login' element={<Login/>}>login</Link></a>
+                </li>
+                <li>
+                    <a aria-current="page"><Link to='/login' element={<Login/>}>admin</Link></a>
+                </li>
                 </ul>
-                </div>
-            </div>
-        </nav>
-      </div>
-  </div>
+                <input type="checkbox" id="check" onClick={()=>{
+                    let x = document.getElementById("check").value;
+                        if(x == 'unchecked'){
+                            document.getElementById("ul").style.right='0';
+                            document.getElementById("check").value = "checked";
+                            }
+                            else{
+                            document.getElementById("ul").style.right= '-100%';
+                            document.getElementById("check").value = "unchecked";}
+                        
+                }} value="unchecked" />
+                <label for="check" id="checkbtn"><i className='fa fa-bars'></i></label>
+            </nav>
+	</section>
+   
+    </>
 };

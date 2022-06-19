@@ -1,5 +1,7 @@
 import { Button } from 'bootstrap';
 import React,{useState} from 'react';
+import { Link } from 'react-router-dom';
+import { Login } from './Login';
 import { Navgation } from './Navgation';
 export const Signup = () => {
     const [name, setName] = useState('');
@@ -29,66 +31,72 @@ export const Signup = () => {
 
   return <div>
   <Navgation/>
-      <div className='main-div'>
-        <div className='child-div w-75'>
-            <div className='row'>
+      <div className='container'>
+        <div className='container-fluid'>
+            <div className='row mt-5 w-100'>
                 <div className='col-sm-6 col-md-6 col-lg-6'>
-                <img src='../Image/Signup.jpg' className='img-fluid w-100'/>  
+                <img src='../Image/Signup.jpg' className='h-100 img-fluid '/>  
                 </div>
                 <div className='col-sm-6 col-md-6 col-lg-6 bg-light'>
                 <div className='p-3'>
-                    <h1 className='fs-3 text-center '>Sign-Up</h1>
+                    <h1 className='fs-5 text-center '>Sign-Up</h1>
                     <center><hr className='m-0 p-0 login-hr'></hr></center>
                 </div>
-                <form className='container w-75' method='' onSubmit=''>
-                    <div className='my-3'>
+                <form className='container w-75' method='' onSubmit={handle}>
+                    <div className='my-4'>
+                    <label className='py-1 fs-4'>All field required * </label>
                     <input
                         type='text'
                         placeholder="Name"
                         value={name}
+                        required
                         onChange={(e) => setName(e.target.value)}
-                        className='form-control'
-                    />
+                        className='form-control fs-4 '
+                    ></input>
                     </div>
-                    <div className='my-3'>
+                    <div className='my-4'>
                     <input
                         type='email'
                         placeholder="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className='form-control'
+                        className='form-control fs-4 '
+                        required
                     />
                     </div>
-                    <div className='my-3'>
+                    <div className='my-4'>
                     <input
                         type='number'
                         placeholder="contact"
                         value={contact}
                         onChange={(e) => setContact(e.target.value)}
-                        className='form-control'
+                        className='form-control fs-4 '
+                        required
                     />
                     </div>
-                    <div className='my-3'>
+                    <div className='my-4'>
                     <input
                         type='number'
                         placeholder="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className='form-control'
+                        className='form-control fs-4 '
+                        required
                     />
                     </div>
                     
-                    <div className='my-3'>
-                        <button type='submit'  onClick={handle} className='form-control bg-success text-light'>SignUp</button>
+                    <div className='my-4'>
+                        <button type='submit' className='form-control fs-4  bg-success text-light'>SignUp</button>
                     </div>
                    
-                    <div className='my-3'>
-                        <p className='text-center'>create the account <span><a href='#'>click here</a></span></p>
+                    <div className='my-4'>
+                        <p className='text-center fs-4'>create the account <span><a href='#'>condition</a></span></p>
                     </div>
-                    <div className='my-3'>
-                        <button type='submit' className='form-control bg-light text-black'>Signin</button>
-                    </div>
+                    
                 </form>
+                    <div className='my-4 container w-75'>
+                    <Link to='/login' element={<Login/>}><button className='form-control fs-4  bg-light text-black'>SignIn</button></Link>
+                    </div>  
                 </div>
             </div>
         </div>
